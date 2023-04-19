@@ -10,7 +10,7 @@
 //   OK: "Success",
 // };
 
-const { ReasonPhrases, StatusCodes } = require("./httpStatusCode");
+const { ReasonPhrases, StatusCodes } = require("../utils/httpStatusCode");
 
 class SuccessResponse {
   constructor({
@@ -51,4 +51,5 @@ class CREATED extends SuccessResponse {
 module.exports = {
   OK,
   CREATED,
+  SuccessResponse,
 };
