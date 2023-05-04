@@ -10,7 +10,7 @@ var discountSchema = new Schema(
   {
     discountName: { type: String, required: true },
     discount_description: { type: String, required: true },
-    discount_type: { type: String, required: true, default: "fixed_mounted" }, //percentage
+    discount_type: { type: String, required: true, default: "fixed_amount" }, //percentage
     discount_value: { type: Number, required: true }, //10.000
     discount_max_value: { type: Number, required: true },
     discount_code: { type: String, required: true },
@@ -38,4 +38,4 @@ var discountSchema = new Schema(
 );
 
 //Export the model
-module.exports = model(DOCUMENT_NAME, apiKeySchema);
+module.exports = model(DOCUMENT_NAME, discountSchema);
