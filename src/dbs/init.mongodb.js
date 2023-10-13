@@ -20,6 +20,8 @@ class Database {
       mongoose.set("debug", { color: true });
     }
 
+    mongoose.set("strictQuery", false);
+
     mongoose
       .connect(connectString, {
         maxPoolSize: 50,

@@ -258,6 +258,48 @@ class AccessService {
     //   };
     // }
   };
-}
 
+  //level=0
+  static fetchWithRetry = async (url = "https://anonystick.com") => {
+    const response = await fetch(url);
+    return response;
+  };
+
+  //level > 0
+  static fetchWithRetry = async (url = "https://anonystick.com") => {
+    const response = await fetch(url);
+    if (response.status < 200 || response.status >= 300) {
+      await this.fetchWithRetry(url);
+    }
+    return response;
+  };
+
+  // level > 2
+  static fetchWithRetry = async (url = "https://anonystick.com") => {
+    const response = await fetch(url);
+    if (response.status < 200 || response.status >= 300) {
+      setTimeout(async () => {
+        await this.fetchWithRetry(url);
+      }, 3000);
+    }
+    return response;
+  };
+  //level > 3
+  //backoff
+  static fetchWithRetry = async (
+    url = "https://anonystick.com",
+    errCount = 0
+  ) => {
+    const ERROR_COUNT_MAX = 3;
+    const response = await fetch(url);
+    if (response.status < 200 || response.status >= 300) {
+      if (errCount < ERROR_COUNT_MAX) {
+        setTimeout(async () => {
+          await this.fetchWithRetry(url, errCount + 1);
+        }, Math.pow(2, errCount) * 3000 + Math.random() * 1000);
+      }
+    }
+    return response;
+  };
+}
 module.exports = AccessService;

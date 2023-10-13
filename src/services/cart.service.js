@@ -1,6 +1,6 @@
 "use strict";
 
-const { cart } = require("../models/cart.model,");
+const { cart } = require("../models/cart.model");
 const { getProductById } = require("../models/repository/product.repo");
 const { NotFoundError } = require("../core/error.response");
 
