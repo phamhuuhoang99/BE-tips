@@ -1,20 +1,19 @@
 "use strict";
 
-// const StatusCode = {
-//   FORBIDDEN: 403,
-//   CONFLICT: 409,
-// };
+// const logger = require("../loggers/winston.log");
+const myLogger = require("../loggers/mylogger.log");
 
-// const ResponseStatusCode = {
-//   FORBIDDEN: "Bad Request error",
-//   CONFLICT: "Conflict error",
-// };
 const { ReasonPhrases, StatusCodes } = require("../utils/httpStatusCode");
 
 class ErrorResponse extends Error {
   constructor(message, status) {
     super(message);
     this.status = status;
+    this.now = Date.now();
+
+    //LOG the error use winston
+    // logger.error(`${this.status} - ${this.message}`);
+    // myLogger.error(message, ["api/v1/login", "vvv33333", { error: "Bad" }]);
   }
 }
 
