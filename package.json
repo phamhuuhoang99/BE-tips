@@ -17,6 +17,7 @@
     "@aws-sdk/client-s3": "^3.441.0",
     "@aws-sdk/cloudfront-signer": "^3.451.0",
     "@aws-sdk/s3-request-presigner": "^3.445.0",
+    "accesscontrol": "^2.2.1",
     "amqplib": "^0.10.3",
     "bcrypt": "^5.1.0",
     "cloudinary": "^1.41.0",

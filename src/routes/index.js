@@ -3,11 +3,11 @@
 const express = require("express");
 const { apiKey, permission } = require("../auth/checkAuth");
 const { route } = require("./checkout");
-const { pushToLogDiscord } = require("../middlewares");
+// const { pushToLogDiscord } = require("../middlewares");
 const router = express.Router();
 
 //add Log to Discord
-router.use(pushToLogDiscord);
+// router.use(pushToLogDiscord);
 
 // check Api Key
 router.use(apiKey);
@@ -16,6 +16,8 @@ router.use(apiKey);
 router.use(permission("0000"));
 
 // router.use("/v1/api/checkout", require("./checkout"));
+router.use("/v1/api/profile", require("./profile"));
+router.use("/v1/api/rbac", require("./rbac"));
 router.use("/v1/api/discount", require("./discount"));
 router.use("/v1/api/inventory", require("./inventory"));
 router.use("/v1/api/cart", require("./cart"));
